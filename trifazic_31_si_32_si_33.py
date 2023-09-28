@@ -15,7 +15,7 @@ def json_web_query(url):
     
     headers = CaseInsensitiveDict()
     headers["Accept"] = "application/json"
-    headers["Authorization"] = "Bearer eyJraWQiOiI3ZDEwMDA1ZC03ODk5LTRkMGQtYmNiNC0yNDRmOThlZTE1NmIiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJhdWQiOiIxMjIyMDE4NTY3NzQiLCJpc3MiOiJFbnRyZXoiLCJlbnBoYXNlVXNlciI6Im93bmVyIiwiZXhwIjoxNzIwNDE1MjQ5LCJpYXQiOjE2ODg4NzkyNDksImp0aSI6ImQ1ODg2NjgxLTY1MTQtNDM5Yi04NDJkLWI2MjYwNTU4ZGNkZSIsInVzZXJuYW1lIjoidGl0dXNjaGlyaWxhQGdtYWlsLmNvbSJ9.eRKI4NWdxCsopfc4nSsqMD0Cfnc3tT3nQ42E6diixjjJyVuRQFxZEvmU6ADVOOLvG7Y2Y86WsI5oCVH1qORc5A"
+    headers["Authorization"] = "Bearer <obtained token from enphase here>"
     
     resp = requests.get(url, headers=headers, verify=False) # self-signed certificate
     #print(resp.status_code)
@@ -23,7 +23,7 @@ def json_web_query(url):
     
 url = 'https://envoy.local/production.json'
 
-# alocam adresele celor 3 switch-uri
+# assigning addresses for my 3 switches:
 adr1 = "192.168.1.31"
 adr2 = "192.168.1.32"
 adr3 = "192.168.1.33"
@@ -32,15 +32,18 @@ sw2 = ShellyPy.Shelly(adr2)
 sw3 = ShellyPy.Shelly(adr3)
 
 
-# alocam puterile consumatorilor:
+# power of the 3 triphase waterheaters:
 pwr1 = 2000
 pwr2 = 3000
 pwr3 = 6000
+# dclj is offset of power at which to trigger relays
 dclj = -100
+# tstp is max temperature to be achieved for water heating
 tstp = 53
+# oprim_tot if temperature gets this high than everything has to stop:
 oprim_tot = 65
 
-# intram in bucla infinita:
+# infinite loop:
 while True:
 # citim starea celor 3 switch-uri
     time.sleep(1)
