@@ -45,7 +45,7 @@ oprim_tot = 65
 
 # infinite loop:
 while True:
-# citim starea celor 3 switch-uri
+# reading the state of all switches
     time.sleep(1)
     try:
         sw1_on = sw1.relay(0)['output']
@@ -70,7 +70,7 @@ while True:
     time.sleep(1)
 
     print("sw1:", sw1_on,"   sw2:", sw2_on,"   sw3:", sw3_on)
-# citim productia si import/export-ul
+# reading production and import/export for entire home
 # result = requests.get(target_url)
 # json_status = json.loads(result.text)
     json_status = json_web_query(url)
@@ -83,7 +83,7 @@ while True:
     else:
         print("\033[1;31m                     import:   ", i_now, "W")
 
-# calculam puterea disponibila:
+# calculating available power for heating water:
     if sw1_on is False and sw2_on is False and sw3_on is False:
         disp_power = -i_now
 
@@ -107,7 +107,7 @@ while True:
 
 
     print("disponibil:", disp_power, "W")
-# incepem calibrarea consumului:
+# calibrating consumption:
     if t100v < oprim_tot:
         if disp_power < p_now:
 # 1 --- 0 0 0
