@@ -1,8 +1,8 @@
 import json
 import requests
-user='tituschirila@gmail.com'
-password='Tiki8159'
-envoy_serial='122201856774'
+user='email@address'
+password='password'
+envoy_serial='serial_number'
 data = {'user[email]': user, 'user[password]': password}
 response = requests.post('https://enlighten.enphaseenergy.com/login/login.json?', data=data)
 response_data = json.loads(response.text)
