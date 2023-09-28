@@ -153,8 +153,8 @@ while True:
                     except:
                         print("nu-i accesibil 33")
 
-# 3 --- 0 1 0 -- de aici am scos and disp_power < pwr1+pwr2-dclj
-            if disp_power >= pwr2-dclj and t101v < tstp:
+# 3 --- 0 1 0 -- 
+            if disp_power >= pwr2-dclj and disp_power < pwr1+pwr2-dclj and t101v < tstp:
                 if sw1_on is True:
                     time.sleep(1)
                     try:
@@ -176,8 +176,8 @@ while True:
                     except:
                         print("nu-i accesibil 33")
 
-# 4 --- 1 1 0 de aici am scos 'and disp_power < pwr3-dclj'
-            if disp_power >= pwr1+pwr2-dclj and t101v < tstp:
+# 4 --- 1 1 0 
+            if disp_power >= pwr1+pwr2-dclj and disp_power < pwr3-dclj and t101v < tstp:
                 if sw1_on is False:
                     time.sleep(1)
                     try:
@@ -332,6 +332,6 @@ while True:
                 print("nu-i accesibil 33")
                    
     print("------------------------------------------------------------")
-    # secunde pana la ciclul urmator:
+    # seconds till next cycle:
     time.sleep(30)
  
